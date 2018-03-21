@@ -2,6 +2,10 @@
 
 ## Tarea 1
 
+### Prerequisitos
+
+Antes de ejecutar el código de la tarea 1 se requiere instales [RabbitMQ](https://www.rabbitmq.com/download.html).
+
 ### Ejecutar simulador de la tarea 1
 
 La tarea 1 cuenta con un simulador que ofrece una situación más realista acerca de una arquitectura Publica - Suscribe. Para ejecutar el simulador y los monitores sigue los siguientes pasos.  
