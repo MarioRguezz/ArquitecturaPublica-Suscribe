@@ -2,22 +2,24 @@
 
 ## Tarea 1
 
-### Prerequisitos
-
-Antes de ejecutar el código de la tarea 1 se requiere instales las librerias de Python indicadas en el archivo [requirements.txt]  
-
 ### Ejecutar simulador de la tarea 1
 
-La tarea 1 cuenta con un simulador que ofrece una situación más realista acerca de una arquitectura Publica - Suscribe. Para ejecutar el simulador sigue los siguientes pasos.  
+La tarea 1 cuenta con un simulador que ofrece una situación más realista acerca de una arquitectura Publica - Suscribe. Para ejecutar el simulador y los monitores sigue los siguientes pasos.  
 1. Abrir terminal.  
-2. Clonar el repositorio:   `git clone https://github.com/arqdesw-curso/Arquitecturas-Publica-Suscribe.git`  
-3. Ingresar a la carpeta que descargamos:   `cd Arquitecturas-Publica-Suscribe/`  
-5. Ejecutar el simulador: `python simulador.py`  
+2. Clonar el repositorio:   `git clone https://github.com/MarioRguezz/ArquitecturaPublica-Suscribe.git`  
+3. Ingresar a la carpeta que descargamos:   `cd Arquitecturas-Publica-Suscribe/`
+4. Instalar las librerías de python del archivo [requirements.txt]
+```
+sudo pip install -r requirements.txt
+```
+5. Ejecutar el simulador: `python simulador.py`  
 6. Ejecutar los monitores de los sensores:
-`python suscriptores/procesador_de_posicion.py`
-`python suscriptores/procesador_de_presion.py`
-`python suscriptores/procesador_de_ritmo_cardiaco.py`
-`python suscriptores/procesador_de_temperatura.py`  
+```
+python suscriptores/procesador_de_posicion.py
+python suscriptores/procesador_de_presion.py
+python suscriptores/procesador_de_ritmo_cardiaco.py
+python suscriptores/procesador_de_temperatura.py
+```
 
 El simulador implementa una versión funcional del Sistema de Monitore de Adultos Mayores (SMAM). A continuación se muestra un diagrama de contenedores del SMAM.
 
@@ -25,9 +27,11 @@ El simulador implementa una versión funcional del Sistema de Monitore de Adulto
 
 ## Versión
 
-2.0.2 - Septiembre 2017
+2.0.3 - Marzo 2018
 
 ## Autores
 
-* **Perla Velasco**
-* **Yonathan Martínez**
+* **Alfredo Sánchez Martínez**
+* **José Fernando González Herrera**
+* **Luis Antonio Ibarra González**
+* **Mario Alberto Negrete Rodríguez**
