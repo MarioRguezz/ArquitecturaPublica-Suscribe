@@ -131,7 +131,7 @@ class Simulador:
         self.lista_medicamento.append(Medicamento(3,"insulina","17:30","10 mililitros"))
         self.lista_medicamento.append(Medicamento(4,"furosemida","18:30","15 miligramos"))
         self.lista_medicamento.append(Medicamento(5,"piroxicam","19:30", "10 miligramos"))
-        self.lista_medicamento.append(Medicamento(6,"tolbutamida","0:10","20 mililitros"))
+        self.lista_medicamento.append(Medicamento(6,"tolbutamida","1:02","20 mililitros"))
         table = PrettyTable([
             'Medicamentos ID',
             'Nombre',
