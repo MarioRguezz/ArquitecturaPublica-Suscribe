@@ -36,11 +36,19 @@
 #           |                         |                          |  - Ejecuta el método  |
 #           |                         |                          |    publish de cada    |
 #           |     start_sensors()     |          Ninguno         |    sensor para publi- |
-#           |                         |                          |    car los signos vi- |
-#           |                         |                          |    tales.             |
+#           |                         |                          |car los signos vitales |
+#           |_________________________|__________________________|_______________________|
+#           |                         |                          |  Ejecuta el método    |   
+#           |                         |                          |  publish del temporiza|   
+#           |    start_temporizador() |     Ninguno              |  dor para publicar la |   
+#           |                         |                          |  medicina en el       |   
+#           |                         |                          |   horario             |   
 #           +----------------------------------------------------------------------------
 #           |set_up_lista_medicamentos|                          | - Da información de la|
-#          |                          |         Ninguno          |   medicina disponible |
+#           |                         |         Ninguno          |   medicina disponible |
+#           +----------------------------------------------------------------------------
+#           |draw_progress_bar        |                          | - muestra un progress |
+#           |                         |         Ninguno          |   bar para espera     |
 #           +-------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
@@ -126,7 +134,7 @@ class Simulador:
 
 
     def set_up_lista_medicamentos(self):
-        self.lista_medicamento.append(Medicamento(1,"paracetamol","15:30","1 pastilla"))
+        self.lista_medicamento.append(Medicamento(1,"paracetamol","12:58","1 pastilla"))
         self.lista_medicamento.append(Medicamento(2,"ibuprofeno","16:30","10 miligramos"))
         self.lista_medicamento.append(Medicamento(3,"insulina","17:30","10 mililitros"))
         self.lista_medicamento.append(Medicamento(4,"furosemida","18:30","15 miligramos"))

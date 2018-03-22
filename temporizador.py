@@ -27,17 +27,17 @@
 #           +-------------------------+--------------------------+-----------------------+
 #           |         Nombre          |        Parámetros        |        Función        |
 #           +-------------------------+--------------------------+-----------------------+
-#           |                         |                          |  - Inicializa los     |
-#           |                         |                          |    publicadores       |
-#           |      |          Ninguno         |    necesarios para co-|
-#           |                         |                          |    menzar la simula-  |
-#           |                         |                          |    ción.              |
+#           |                         |                          |  - compara la hora    |
+#           |                         |                          | del medicamento con   |
+#           |      |      Publish     |     ninguno              | la hora actual y si
+#           |                         |                          | coincide ejecuta una  |
+#           |                         |                          |   acción              |
 #           +-------------------------+--------------------------+-----------------------+
-#           |                         |                          |  - Ejecuta el método  |
-#           |                         |                          |    publish de cada    |
-#           |        |          Ninguno         |    sensor para publi- |
-#           |                         |                          |    car los signos vi- |
-#           |                         |                          |    tales.             |
+#           |                         |                          |  - muestra el id de   |
+#           |                         |          grupo           | los ancianos que      |
+#           |        |     job        |     medicamento          | necesitan la medicina |
+#           |                         |         id               | la medicina y el grupo|
+#           |                         |                          |                       |
 #           +-------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
@@ -48,7 +48,6 @@ import progressbar
 import schedule
 import time
 class Temporizador:
-    producer = "Temporizador"
     personas_grupo = []
     lista_medicamento = []
     
