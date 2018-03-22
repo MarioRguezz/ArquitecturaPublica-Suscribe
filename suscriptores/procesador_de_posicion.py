@@ -93,7 +93,7 @@ class ProcesadorPosicion:
                and -10 <= int(json_message['y_position']) <= 2 
                and -10 <= int(json_message['z_position']) <= 1  ) :
             monitor = Monitor()
-            monitor.print_notification('presenta problemas con la presión',json_message['datetime'], json_message['id'])
+            monitor.print_notification('presenta problemas con la posición',json_message['datetime'], json_message['id'])
         time.sleep(1)
         ch.basic_ack(delivery_tag=method.delivery_tag)
 

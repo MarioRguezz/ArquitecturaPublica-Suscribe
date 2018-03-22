@@ -38,6 +38,9 @@
 #           |     start_sensors()     |          Ninguno         |    sensor para publi- |
 #           |                         |                          |    car los signos vi- |
 #           |                         |                          |    tales.             |
+#           +----------------------------------------------------------------------------
+#           |set_up_lista_medicamentos|                          | - Da información de la|
+#          |                          |         Ninguno          |   medicina disponible |
 #           +-------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
@@ -46,12 +49,22 @@ import progressbar
 from time import sleep
 sys.path.append('publicadores')
 from xiaomi_my_band import XiaomiMyBand
+from temporizador import Temporizador
 from pyfiglet import figlet_format
+from medicamento import Medicamento
+from prettytable import PrettyTable
+import random
 
 
 class Simulador:
     sensores = []
     id_inicial = 39722608
+    lista_medicamento = []
+    personas_grupo = []
+
+
+
+
 
     def set_up_sensors(self):
         print('cargando')
@@ -75,16 +88,29 @@ class Simulador:
             print('| wearable Xiaomi My Band asignado, id: ' + str(self.id_inicial))
             print('+---------------------------------------------+')
             self.id_inicial += 1
+        for element in self.sensores:
+            self.personas_grupo.append([element.id, random.randint(0, 6)])
+        
+
+        """
+        print(len(self.personas_grupo))
+        print(self.personas_grupo[0][0])
+        print(self.personas_grupo[0][1])
+        for persona in self.personas_grupo:
+            print(persona)
+        """
         print('+---------------------------------------------+')
         print('|        LISTO PARA INICIAR SIMULACIÓN            |')
         print('+---------------------------------------------+')
         print('')
         print('*Nota: Se enviarán 1000 mensajes como parte de la simulación')
+        t = Temporizador(self.lista_medicamento, self.personas_grupo)
+        t.publish()
         raw_input('presiona enter para iniciar: ')
         self.start_sensors()
 
     def start_sensors(self):
-        for x in xrange(0, 1000):
+        for x in xrange(0, 1):
             for s in self.sensores:
                 s.publish()
 
@@ -96,6 +122,29 @@ class Simulador:
             sleep(0.2)
         bar.finish()
 
+
+    def set_up_lista_medicamentos(self):
+        self.lista_medicamento.append(Medicamento(1,"paracetamol","15:30","1 pastilla"))
+        self.lista_medicamento.append(Medicamento(2,"ibuprofeno","16:30","10 miligramos"))
+        self.lista_medicamento.append(Medicamento(3,"insulina","17:30","10 mililitros"))
+        self.lista_medicamento.append(Medicamento(4,"furosemida","18:30","15 miligramos"))
+        self.lista_medicamento.append(Medicamento(5,"piroxicam","19:30", "10 miligramos"))
+        self.lista_medicamento.append(Medicamento(6,"tolbutamida","22:20","20 mililitros"))
+        print(self.lista_medicamento[1].nombre)
+        table = PrettyTable([
+            'Medicamentos ID',
+            'Nombre',
+            'Horario',
+            'Dosis'
+        ])
+        for element in self.lista_medicamento:
+            table.add_row([element.id_medicamento, element.nombre, element.horario, element.dosis])
+        print("Medicamentos disponibles")
+        print(table)
+
+   
+
 if __name__ == '__main__':
     simulador = Simulador()
+    simulador.set_up_lista_medicamentos()
     simulador.set_up_sensors()

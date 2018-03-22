@@ -1,13 +1,20 @@
 # Imágenes
 
-Esta carpeta contiene el diagrama de contenedores del SMAM. Así mismo se incluye el archivo fuente o editable para aplicar las 
-futuras modificaciones. El archivo fuente fue diseñado utilizando el software libre Inkscape.
+Esta carpeta contiene el diagrama de contenedores del SMAM. Así mismo se incluye el archivo fuente para aplicar las modificaciones necesarias. El archivo fuente fue diseñado utilizando el software Sketch.
 
 ## Versión
 
-2.0.2 - Septiembre 2017
+2.0.3 - Marzo 2018
 
 ## Autores
 
-* **Perla Velasco**
-* **Yonathan Martínez**
+* **Alfredo Sánchez Martínez**
+* **José Fernando González Herrera**
+* **Luis Antonio Ibarra González**
+* **Mario Alberto Negrete Rodríguez**
+
+
+
+
+
+
