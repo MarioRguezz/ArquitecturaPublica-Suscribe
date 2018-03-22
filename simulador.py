@@ -99,10 +99,13 @@ class Simulador:
         print('*Nota: Se enviarán 1000 mensajes como parte de la simulación')
         raw_input('presiona enter para iniciar: ')
         thread_temporizador = threading.Thread(target=self.start_temporizador)
+        thread_temporizador.daemon = True
         thread_sensores = threading.Thread(target=self.start_sensors)
+        thread_sensores.daemon = True
         thread_temporizador.start()
         thread_sensores.start()
-
+        while True:
+            time.sleep(1)
     def start_sensors(self):
         for x in xrange(0, 1):
             for s in self.sensores:
@@ -128,7 +131,7 @@ class Simulador:
         self.lista_medicamento.append(Medicamento(3,"insulina","17:30","10 mililitros"))
         self.lista_medicamento.append(Medicamento(4,"furosemida","18:30","15 miligramos"))
         self.lista_medicamento.append(Medicamento(5,"piroxicam","19:30", "10 miligramos"))
-        self.lista_medicamento.append(Medicamento(6,"tolbutamida","23:44","20 mililitros"))
+        self.lista_medicamento.append(Medicamento(6,"tolbutamida","0:10","20 mililitros"))
         table = PrettyTable([
             'Medicamentos ID',
             'Nombre',
