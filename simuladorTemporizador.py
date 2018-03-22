@@ -54,8 +54,6 @@ from pyfiglet import figlet_format
 from medicamento import Medicamento
 from prettytable import PrettyTable
 import random
-import threading
-import time
 
 
 class Simulador:
@@ -64,11 +62,7 @@ class Simulador:
     lista_medicamento = []
     personas_grupo = []
 
-
-
-
-
-    def set_up_sensors(self):
+    def set_up_temporizador(self):
         print('cargando')
         self.draw_progress_bar(10)
         print(figlet_format('Bienvenido'))
@@ -76,19 +70,14 @@ class Simulador:
         print('Cargando simulador')
         self.draw_progress_bar(20)
         print('+---------------------------------------------+')
-        print('|        CONFIGURACIÓN DE LA SIMULACIÓN       |')
+        print('|        CONFIGURACIÓN DE TEMPORIZADOR       |')
         print('+---------------------------------------------+')
         adultos_mayores = raw_input('|ingresa el número de adultos mayores: ')
         print('+---------------------------------------------+')
         raw_input('presiona enter para continuar: ')
-        print('+---------------------------------------------+')
-        print('|            ASIGNACIÓN DE SENSORES           |')
-        print('+---------------------------------------------+')
         for x in xrange(0, int(adultos_mayores)):
             s = XiaomiMyBand(self.id_inicial)
             self.sensores.append(s)
-            print('| wearable Xiaomi My Band asignado, id: ' + str(self.id_inicial))
-            print('+---------------------------------------------+')
             self.id_inicial += 1
         for element in self.sensores:
             self.personas_grupo.append([element.id, random.randint(0, 6)])
@@ -96,23 +85,11 @@ class Simulador:
         print('|        LISTO PARA INICIAR SIMULACIÓN            |')
         print('+---------------------------------------------+')
         print('')
-        print('*Nota: Se enviarán 1000 mensajes como parte de la simulación')
-        raw_input('presiona enter para iniciar: ')
-        thread_temporizador = threading.Thread(target=self.start_temporizador)
-        thread_sensores = threading.Thread(target=self.start_sensors)
-        thread_temporizador.start()
-        thread_sensores.start()
-
-    def start_sensors(self):
-        for x in xrange(0, 1):
-            for s in self.sensores:
-                s.publish()
-
-    def start_temporizador(self):
+        print('*Nota: Se enviará un mensaje cuando toque la respectiva medicina al grupo')
         t = Temporizador(self.lista_medicamento, self.personas_grupo)
         t.publish()
 
-
+  
     def draw_progress_bar(self, value):
         bar = progressbar.ProgressBar(maxval=value, widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
         bar.start()
@@ -128,7 +105,8 @@ class Simulador:
         self.lista_medicamento.append(Medicamento(3,"insulina","17:30","10 mililitros"))
         self.lista_medicamento.append(Medicamento(4,"furosemida","18:30","15 miligramos"))
         self.lista_medicamento.append(Medicamento(5,"piroxicam","19:30", "10 miligramos"))
-        self.lista_medicamento.append(Medicamento(6,"tolbutamida","23:44","20 mililitros"))
+        self.lista_medicamento.append(Medicamento(6,"tolbutamida","22:34","20 mililitros"))
+        print(self.lista_medicamento[1].nombre)
         table = PrettyTable([
             'Medicamentos ID',
             'Nombre',
@@ -145,4 +123,4 @@ class Simulador:
 if __name__ == '__main__':
     simulador = Simulador()
     simulador.set_up_lista_medicamentos()
-    simulador.set_up_sensors()
+    simulador.set_up_temporizador()

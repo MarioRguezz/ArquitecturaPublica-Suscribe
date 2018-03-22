@@ -57,14 +57,19 @@ class Temporizador:
         self.personas_grupo = personas_grupo
 
     def publish(self):
-        for x in xrange(0,len(self.lista_medicamento)):
+        for grupo in xrange(0,len(self.lista_medicamento)):
             schedule.every(1).minutes.do(job)
-            schedule.every().day.at(self.lista_medicamento[x].horario).do(job)
+            schedule.every().day.at(self.lista_medicamento[grupo].horario).do(job,self.lista_medicamento[grupo].nombre,self.personas_grupo, grupo )
 
         while True:
             schedule.run_pending()
             time.sleep(1)
 
-def job():
-        #Aqui se publica
-        print("I'm working...") 
+def job(medicamento, grupo, id):
+        n = str(id)
+        for x in xrange(0,len(grupo)): 
+           if id == grupo[x][1]:
+            y = str( grupo[x][0])
+            print("El id de cada anciano del grupo es"+ y)
+        print("La medicina que se debe tomar ahorita es "+ medicamento + " del grupo de adultos mayores "+ n   ) 
+       
